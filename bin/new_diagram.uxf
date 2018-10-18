@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>80</y>
+      <w>200</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Core
+Package::driver
+--
+-pvt. st. Parser fileInputParser
+-pbl. st. File baseInputFile
+--
+pbl. st. vd. main(String[] args)
+--
+Responsibilities
+--
+Handles core execution tasks</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>230</x>
+      <y>80</y>
+      <w>330</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>Auto
+Package::data
+--
+pvt. st. fin. long serialVersionID
+pvt. st. fin. int MAXIMUM_OPTIONSET_ARRAY_SIZE
+pvt. OptionSet[] options
+pvt. double baseCost
+pvt. String name
+--
+pro. Getters and Setters for above variables.
+constructor(OptionSet[], double, String)
+constructor()
+pub. void LogVehicle()
+pub. void LogVehicle(FileWriter)
+--
+Responsibilities
+-- acts as the uppermost level storage class</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>400</y>
+      <w>320</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>OptionSet
+Package::data
+--
+pvt. st. fin. long serialVersionUID
+pvt. st. fin. int MAXIMUM_OPTION_ARRAY_SIZE
+pvt. Option[] options
+pvt. String name
+--
+constructor(String, Option[])
+constructor(String)
+constructor()
+pro. checkArray()
+pro. getters and setters for member vars
+--
+Responsibilities
+-- data storage class for arrays of Options</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>400</y>
+      <w>260</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>Option
+Package::data
+Inner class of OptionSet
+--
+pvt. st. fin. long serialVersionUID
+pvt. String title
+pvt. float cost
+--
+constructor(String, Float)
+constructor(float)
+constructor()
+pro. getters and setters for member vars
+--
+Responsibilities
+-- data storage subclass of OptionSet
+stores single Options.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>430</y>
+      <w>130</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>580</x>
+      <y>410</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>parent class of</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>380</x>
+      <y>330</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>390</x>
+      <y>350</y>
+      <w>160</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Contains an Array Of
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>590</x>
+      <y>80</y>
+      <w>210</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Parser
+Package::io
+--
+pvt. File storageLocation
+--
+constructor(Java.io.File)
+pro. File getStorageLocation
+pub. Auto Parse()
+--
+Responsibilities
+-- handles text file parsing</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>0</x>
+      <y>250</y>
+      <w>260</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>LEGEND
+pvt: Private
+pub: Public
+pro: Protected
+st : Static
+fin: Final
+
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
