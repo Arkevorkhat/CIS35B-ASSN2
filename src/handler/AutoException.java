@@ -7,16 +7,24 @@ public class AutoException extends Exception {
 	private short ExceptionID = 0x000;
 	private String ErrorMessage;
 	static {
-		new Handler();
-		Handler.addFix((short)0x0, (e) -> {
+		Handler.addFix(0x0, ()->{
 			Frame test = new Frame();
 			test.setVisible(true);
 			javax.swing.JOptionPane.showMessageDialog(test,"exception handler reached.");
+			return null;
 		});
 		
 	}
+	@Deprecated
 	public AutoException(ExceptionIDs ExceptionID) {
 		this.setExceptionID(ExceptionID.GetExceptionID());
+	}
+	public AutoException(short ExceptionID) {
+		this.ExceptionID = ExceptionID;
+	}
+	public AutoException(short ExceptionID, String Message) {
+		this.ExceptionID=ExceptionID;
+		this.ErrorMessage=Message; 
 	}
 	/*
 	 * Exceptions 0x000 - 0x280 : General Exceptions
@@ -44,5 +52,13 @@ public class AutoException extends Exception {
 	}
 	public void exceptionRepair(int exceptionID) {
 		Handler.runFix(exceptionID);
+	}
+
+	public String getErrorMessage() {
+		return ErrorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		ErrorMessage = errorMessage;
 	}
 }

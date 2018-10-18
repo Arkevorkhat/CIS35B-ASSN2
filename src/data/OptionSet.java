@@ -8,33 +8,23 @@ import handler.ExceptionIDs;
 
 public class OptionSet implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private static int MAXIMUM_OPTION_ARRAY_SIZE = 15; // expected maximum number of options, increase if the option
-														// gamut will be larger than this.
-	private Option options[];
+	// gamut will be larger than this.
+	private ArrayList<Option> options;
 	private String name;
 
-	public OptionSet(String name, Option[] options) {
+	public OptionSet(String name, ArrayList<Option> options) {
 		this.name = name;
 		this.options = options;
 	}
 
 	public OptionSet(String name) {
 		this.setName(name);
-		this.options = new Option[MAXIMUM_OPTION_ARRAY_SIZE];
-		for (int i = 0; i < this.options.length; i++) {
-			try {
-				this.options[i] = new Option();
-			} catch (ArrayIndexOutOfBoundsException e) { // should theoretically be unreachable code, but you can never
-															// be too safe.
-				System.err.printf("An Exception Occurred, Message: %s", e.getMessage());
-				break;
-			}
-		}
+		this.options = new ArrayList<Option>();
 	}
 
 	public OptionSet() {
 		this.name = "";
-		this.options = null;
+		this.options = new ArrayList<Option>();
 	}
 
 	/**
@@ -56,19 +46,20 @@ public class OptionSet implements Serializable {
 	protected String formatOptionSetForFileOutput() {
 		StringBuffer storage = new StringBuffer();
 		for (Option O : this.options) {
-			storage.append(O.title + ":" + O.cost + "\n"); // Append data Title:Cost\n to stringbuffer
+			storage.append(O.getTitle() + ":" + O.getCost() + "\n"); // Append data Title:Cost\n to stringbuffer
 		}
 		return storage.toString(); // builds the StringBuffer object into a string and returns it.
 	}
 
 	/**
-	 * @param name, the name of the option to find.
+	 * @param name,
+	 *            the name of the option to find.
 	 * @return the option, if found, or NULL if no such option exists.
 	 */
 
 	protected Option findOptionByName(String name) {
 		for (Option o : this.options) {
-			if (o.title.equals(name)) {
+			if (o.getTitle().equals(name)) {
 				return o;
 			} else
 				continue;
@@ -77,14 +68,15 @@ public class OptionSet implements Serializable {
 	}
 
 	/**
-	 * @param cost, the cost value of the option that needs to be found.
+	 * @param cost,
+	 *            the cost value of the option that needs to be found.
 	 * @return the array of Option objects with the chosen cost.
 	 */
 
 	protected Option[] findOptionByCost(double cost) {
 		ArrayList<Option> options = new ArrayList<Option>();
 		for (Option o : this.options) {
-			if (o.cost == cost) {
+			if (o.getCost() == cost) {
 				options.add(o);
 			}
 		}
@@ -92,43 +84,47 @@ public class OptionSet implements Serializable {
 	}
 
 	/**
-	 * @param name, the name of the option to change
-	 * @param Cost, the cost value to set on the chosen option
-	 * @throws ArrayIndexOutOfBoundsException if this method is called on an
-	 *                                        improperly initialized optionSet
-	 *                                        object
+	 * @param name,
+	 *            the name of the option to change
+	 * @param Cost,
+	 *            the cost value to set on the chosen option
+	 * @throws ArrayIndexOutOfBoundsException
+	 *             if this method is called on an improperly initialized optionSet
+	 *             object
 	 */
 	protected void SetOptionByName(String name, float Cost) throws AutoException {
 		checkArray();
-		for (int i = 0; i < this.options.length; i++) {
-			if (this.options[i].title.equals(name)) { // whenever you find an option with the chosen name
-				this.options[i].setCost(Cost); // set its' cost to the float input.
+		for(Option op : this.options) {
+			if(op.getTitle().equals(name)) {
+				op.setCost(Cost);
 			}
 		}
 	}
 
 	/**
-	 * @param Cost, the cost value that needs to be updated universally.
-	 * @param Set, the final cost value that should exist after the set operation.
-	 * @throws ArrayIndexOutOfBoundsException, when called on an improperly or non
-	 *                                         initialized optionset object.
+	 * @param Cost,
+	 *            the cost value that needs to be updated universally.
+	 * @param Set,
+	 *            the final cost value that should exist after the set operation.
+	 * @throws ArrayIndexOutOfBoundsException,
+	 *             when called on an improperly or non initialized optionset object.
 	 */
 	protected void setOptionByCost(float Cost, float Set) throws AutoException {
 		checkArray();
-		for (int i = 0; i < this.options.length; i++) {
-			if (this.options[i].getCost() == Cost) {
-				this.options[i].setCost(Set);
+		for(Option op : this.options) {
+			if (op.getCost()==Cost) {
+				op.setCost(Set);
 			}
 		}
 	}
 
 	/**
 	 * @category internal utilities
-	 * @throws AutoException if called from an improperly initialized optionset
-	 *                       object
+	 * @throws AutoException
+	 *             if called from an improperly initialized optionset object
 	 */
 	protected void checkArray() throws AutoException {
-		if (this.options.length == 0) {
+		if(this.options.isEmpty()) {
 			throw new AutoException(ExceptionIDs.INVALIDARRAY);
 		}
 	}
@@ -141,46 +137,11 @@ public class OptionSet implements Serializable {
 		this.name = name;
 	}
 
-	protected Option[] getOptions() {
+	protected ArrayList<Option> getOptions() { 
 		return options;
 	}
 
-	protected void setOptions(Option[] options) {
+	protected void setOptions(ArrayList<Option> options) {
 		this.options = options;
-	}
-
-	public class Option implements Serializable {
-		private static final long serialVersionUID = 1L;
-		private String title;
-		private float cost;
-
-		protected float getCost() { // getter
-			return cost;
-		}
-
-		protected void setCost(float cost) { // setter
-			this.cost = cost;
-		}
-
-		public Option() {
-			this.cost = 0f;
-		}
-
-		public Option(float cost) {
-			this.cost = cost;
-		}
-
-		public Option(String name, float cost) {
-			this.title = name;
-			this.cost = cost;
-		}
-
-		protected String getTitle() {
-			return title;
-		}
-
-		protected void setTitle(String title) {
-			this.title = title;
-		}
 	}
 }

@@ -1,6 +1,7 @@
 package handler;
 
+@FunctionalInterface
 public interface Fix {
-	public Object fix(AutoException except);
+	public abstract Object fix();
 }
 	

@@ -5,8 +5,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 import data.*;
-import handler.AutoException;
-import handler.ExceptionIDs;
+import handler.ParserFix;
 
 public class Parser {
 	private File storageLocation;
@@ -38,17 +37,18 @@ public class Parser {
 				parserInterimVehicle.setName(tempFirstLine[0]);
 				// parserLogger.log(Level.INFO, "parserVehicle.name == " +
 				// parserInterimVehicle.getName());
-				parserInterimVehicle.setBaseCost(Double.parseDouble(tempFirstLine[1].trim()));
+				try {
+					parserInterimVehicle.setBaseCost(Double.parseDouble(tempFirstLine[1].trim()));
+				} catch (NumberFormatException E) {
+					parserInterimVehicle.setBaseCost(ParserFix.fixDouble("Vehicle Base Cost"));
+				}
 				// parserLogger.log(Level.INFO, "parserVehicle.cost == " +
 				// parserInterimVehicle.getBaseCost());
 				int optionSetLoopLimit;
 				try {
 					optionSetLoopLimit = Integer.parseInt(storageInput.nextLine());
 				} catch (NumberFormatException e) {
-					boolean cont = true;
-					do {
-						optionSetLoopLimit = (Integer) new AutoException(ExceptionIDs.MISSINGVALUEINT).fix();
-					} while (cont = true);
+					optionSetLoopLimit = ParserFix.fixInt("Number of OptionSets");
 				}
 				// grab the second line of the file,
 				// which should be an integer number
@@ -59,19 +59,23 @@ public class Parser {
 					String optionSetName = storageInput.nextLine(); // grab the first line of the OptionSet block, and
 																	// store it as the name of the set.
 					// parserLogger.log(Level.INFO, optionSetName);
-					ArrayList<OptionSet.Option> options = new ArrayList<OptionSet.Option>(); // create an arrayList to
+					ArrayList<Option> options = new ArrayList<Option>(); // create an arrayList to
 																								// handle temporary
 																								// storage of Option
 																								// objects.
-
-					int optionsLoopLimit = Integer.parseInt(storageInput.nextLine());
+					int optionsLoopLimit;
+					try {
+						optionsLoopLimit = Integer.parseInt(storageInput.nextLine());
+					} catch (NumberFormatException E) {
+						optionsLoopLimit = ParserFix.fixInt("Number of Options in OptionSet " + optionSetName);
+					}
 					for (int iterator1 = 0; iterator1 < optionsLoopLimit; iterator1++) { // loop across the set of
 																							// Options
 						String optionIn = storageInput.nextLine(); // read the Option as an ordered pair
 						// parserLogger.log(Level.INFO, optionIn + " ");
 						String[] option = optionIn.split(":"); // split across the pair delimiter :
 						// parserLogger.log(Level.INFO, option.toString());
-						options.add(new OptionSet().new Option(option[0], Float.parseFloat(option[1]))); // add the
+						options.add(new Option(option[0], Float.parseFloat(option[1]))); // add the
 																											// parsed
 																											// Option to
 																											// the
@@ -79,7 +83,7 @@ public class Parser {
 																											// arrayList
 						// parserLogger.log(Level.INFO, "Added an entry to this.options");
 					}
-					optionSetList.add(new OptionSet(optionSetName, options.toArray(new OptionSet.Option[0])));
+					optionSetList.add(new OptionSet(optionSetName, options));
 					// add the parsed optionSet to the OptionSet ArrayList
 				}
 				parserInterimVehicle.setOptions(optionSetList.toArray(new OptionSet[0]));
