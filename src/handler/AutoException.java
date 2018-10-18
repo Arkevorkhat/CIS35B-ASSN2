@@ -2,15 +2,13 @@ package handler;
 
 import java.awt.Frame;
 
-import javax.swing.JFrame;
-
 public class AutoException extends Exception {
 	private static final long serialVersionUID = 1L;
 	private short ExceptionID = 0x000;
-	private static Handler mainHandler;
+	private String ErrorMessage;
 	static {
-		mainHandler = new Handler();
-		mainHandler.addFix(0x0, () -> {
+		new Handler();
+		Handler.addFix((short)0x0, (e) -> {
 			Frame test = new Frame();
 			test.setVisible(true);
 			javax.swing.JOptionPane.showMessageDialog(test,"exception handler reached.");
@@ -36,7 +34,7 @@ public class AutoException extends Exception {
 		return ExceptionID;
 	}
 	public void fix() {
-		mainHandler.runFix(this.ExceptionID);
+		Handler.runFix(this.ExceptionID);
 	}
 	/**
 	 * @param exceptionID the exceptionID to set
@@ -45,6 +43,6 @@ public class AutoException extends Exception {
 		ExceptionID = exceptionID;
 	}
 	public void exceptionRepair(int exceptionID) {
-		mainHandler.runFix(exceptionID);
+		Handler.runFix(exceptionID);
 	}
 }

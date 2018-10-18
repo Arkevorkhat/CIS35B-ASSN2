@@ -5,10 +5,12 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 import data.*;
+import handler.AutoException;
+import handler.ExceptionIDs;
 
 public class Parser {
 	private File storageLocation;
-	
+
 	public Parser(File Input) {
 		this.storageLocation = Input;
 	}
@@ -39,10 +41,20 @@ public class Parser {
 				parserInterimVehicle.setBaseCost(Double.parseDouble(tempFirstLine[1].trim()));
 				// parserLogger.log(Level.INFO, "parserVehicle.cost == " +
 				// parserInterimVehicle.getBaseCost());
-				int optionSetLoopLimit = Integer.parseInt(storageInput.nextLine()); // grab the second line of the file,
-																					// which should be an integer number
-																					// of OptionSets
+				int optionSetLoopLimit;
+				try {
+					optionSetLoopLimit = Integer.parseInt(storageInput.nextLine());
+				} catch (NumberFormatException e) {
+					boolean cont = true;
+					do {
+						optionSetLoopLimit = (Integer) new AutoException(ExceptionIDs.MISSINGVALUEINT).fix();
+					} while (cont = true);
+				}
+				// grab the second line of the file,
+				// which should be an integer number
+				// of OptionSets
 				// parserLogger.log(Level.INFO, "Number of OptionSets = " + optionSetLoopLimit);
+
 				for (int iterator0 = 0; iterator0 < optionSetLoopLimit; iterator0++) { // loop across the OptionSets
 					String optionSetName = storageInput.nextLine(); // grab the first line of the OptionSet block, and
 																	// store it as the name of the set.

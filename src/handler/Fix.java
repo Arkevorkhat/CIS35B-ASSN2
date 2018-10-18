@@ -1,5 +1,6 @@
 package handler;
 
 public interface Fix {
-	public void fix();
+	public Object fix(AutoException except);
 }
+	
