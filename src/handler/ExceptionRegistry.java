@@ -3,13 +3,28 @@ package handler;
 import java.util.ArrayList;
 
 public class ExceptionRegistry {
-	private ArrayList<ExceptionEntry> registeredExceptions;
 
-	public ArrayList<ExceptionEntry> getRegisteredExceptions() {
-		return this.registeredExceptions;
+	private static ArrayList<ExceptionEntry>		registeredExceptions;
+	private static ArrayList<ExceptionRegistrar>	PendingRegistrars;
+
+	public static ArrayList<ExceptionEntry> getRegisteredExceptions(){
+		return registeredExceptions;
 	}
 
-	public void addRegisteredExceptions(ExceptionEntry input) {
-		this.registeredExceptions.add(input);
+	private static void addRegisteredException(ExceptionEntry input){
+		registeredExceptions.add(input);
+	}
+
+	public static void Register(ExceptionRegistrar registrar){
+		PendingRegistrars.add(registrar);
+	}
+
+	public static void finalizeAllPendingRegistrars(){
+		for (ExceptionRegistrar registrar : PendingRegistrars) {
+			for (ExceptionEntry entry : registrar.RegisterErrorFixes()) {
+				addRegisteredException(entry);
+			}
+			PendingRegistrars.remove(registrar);
+		}
 	}
 }

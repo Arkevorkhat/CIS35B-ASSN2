@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import handler.AutoException;
-import handler.ExceptionIDs;
 
 public class OptionSet implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -125,7 +124,7 @@ public class OptionSet implements Serializable {
 	 */
 	protected void checkArray() throws AutoException {
 		if(this.options.isEmpty()) {
-			throw new AutoException(ExceptionIDs.INVALIDARRAY);
+			throw new AutoException((short) 0x003);
 		}
 	}
 
@@ -137,7 +136,7 @@ public class OptionSet implements Serializable {
 		this.name = name;
 	}
 
-	protected ArrayList<Option> getOptions() { 
+	protected ArrayList<Option> getOptions() {
 		return options;
 	}
 

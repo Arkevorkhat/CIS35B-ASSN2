@@ -9,31 +9,36 @@ public class ExceptionEntry {
 	public Class<?> getRegistrar() {
 		return registrar;
 	}
-	public void setRegistrar(Class<?> registrar) {
+	public ExceptionEntry setRegistrar(Class<?> registrar) {
 		this.registrar = registrar;
+		return this;
 	}
 	public String getDefaultMessage() {
 		return DefaultMessage;
 	}
-	public void setDefaultMessage(String defaultMessage) {
+	public ExceptionEntry setDefaultMessage(String defaultMessage) {
 		DefaultMessage = defaultMessage;
+		return this;
 	}
 	public String getName() {
 		return Name;
 	}
-	public void setName(String name) {
+	public ExceptionEntry setName(String name) {
 		Name = name;
+		return this;
 	}
 	public short getExceptionID() {
 		return ExceptionID;
 	}
-	public void setExceptionID(short exceptionID) {
+	public ExceptionEntry setExceptionID(short exceptionID) {
 		ExceptionID = exceptionID;
+		return this;
 	}
 	public Fix getDefinedFixCode() {
 		return definedFixCode;
 	}
-	public void setDefinedFixCode(Fix definedFixCode) {
+	public ExceptionEntry setDefinedFixCode(Fix definedFixCode) {
 		this.definedFixCode = definedFixCode;
+		return this;
 	}
 }

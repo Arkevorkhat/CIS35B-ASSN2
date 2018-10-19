@@ -9,10 +9,11 @@ import handler.AutoException;
 import handler.ExceptionIDs;
 
 public class Core {
-	private static Parser fileInputParser;
-	public static File baseInputFile;
 
-	public static void main(String[] args) {
+	private static Parser	fileInputParser;
+	public static File		baseInputFile;
+
+	public static void main(String[] args){
 		try {
 			baseInputFile = new File(Core.class.getResource("Ford ZTW.txt").toURI());
 			if (baseInputFile.exists()) {
@@ -26,11 +27,11 @@ public class Core {
 				ser.Serialize();
 				ser = new Serializer(ser.getStorageLocation());
 				ser.deSerialize();
-				new AutoException(ExceptionIDs.NOEXCEPTION).fix();
-				} else {
+			}
+			else {
 				System.out.printf("Failed to open file %s", baseInputFile.getAbsolutePath());
 			}
-		} catch (Exception e) {
 		}
+		catch (Exception e) {}
 	}
 }

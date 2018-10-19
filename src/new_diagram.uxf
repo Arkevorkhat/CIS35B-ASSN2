@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>5</zoom_level>
+  <zoom_level>4</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>50</x>
-      <y>210</y>
-      <w>100</w>
-      <h>75</h>
+      <x>84</x>
+      <y>264</y>
+      <w>80</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Core
 Package::driver
@@ -25,10 +25,10 @@ Handles core execution tasks</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>165</x>
-      <y>210</y>
-      <w>165</w>
-      <h>130</h>
+      <x>72</x>
+      <y>504</y>
+      <w>132</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>Auto
 Package::data
@@ -52,10 +52,10 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>180</x>
-      <y>370</y>
-      <w>160</w>
-      <h>120</h>
+      <x>220</x>
+      <y>504</y>
+      <w>128</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>OptionSet
 Package::data
@@ -78,10 +78,10 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>390</x>
-      <y>370</y>
-      <w>130</w>
-      <h>120</h>
+      <x>364</x>
+      <y>504</y>
+      <w>104</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>Option
 Package::data
@@ -104,21 +104,21 @@ stores single Options.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>335</x>
-      <y>385</y>
-      <w>65</w>
-      <h>15</h>
+      <x>344</x>
+      <y>516</y>
+      <w>28</w>
+      <h>12</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>340</x>
-      <y>375</y>
-      <w>50</w>
-      <h>15</h>
+      <x>316</x>
+      <y>396</y>
+      <w>40</w>
+      <h>12</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -126,33 +126,21 @@ stores single Options.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>335</y>
-      <w>15</w>
-      <h>45</h>
+      <x>200</x>
+      <y>516</y>
+      <w>28</w>
+      <h>12</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>245</x>
-      <y>345</y>
-      <w>80</w>
-      <h>15</h>
-    </coordinates>
-    <panel_attributes>Contains an Array Of
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>345</x>
-      <y>210</y>
-      <w>105</w>
-      <h>80</h>
+      <x>240</x>
+      <y>264</y>
+      <w>84</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>Parser
 Package::io
@@ -170,10 +158,10 @@ Responsibilities
   <element>
     <id>Text</id>
     <coordinates>
-      <x>50</x>
-      <y>285</y>
-      <w>130</w>
-      <h>55</h>
+      <x>84</x>
+      <y>324</y>
+      <w>104</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>LEGEND
 pvt: Private
@@ -188,10 +176,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>25</x>
-      <y>175</y>
-      <w>840</w>
-      <h>475</h>
+      <x>64</x>
+      <y>236</y>
+      <w>676</w>
+      <h>380</h>
     </coordinates>
     <panel_attributes>E
 n
@@ -211,51 +199,304 @@ A
 r
 e
 a</panel_attributes>
-    <additional_attributes>10.0;10.0;1650.0;10.0;1650.0;930.0;10.0;930.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;1660.0;10.0;1660.0;930.0;10.0;930.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1030</x>
-      <y>275</y>
-      <w>105</w>
-      <h>35</h>
+      <x>556</x>
+      <y>248</y>
+      <w>84</w>
+      <h>28</h>
     </coordinates>
-    <panel_attributes>_object: Class_
+    <panel_attributes>AutoException
 --
-id: Long="36548"
-[waiting for message]</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>465</x>
-      <y>195</y>
-      <w>130</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>_Interface: CreateAuto_
+pvt. short exceptionID
+pvt. String message
 --
-pub. void BuildAuto(String FilePath)
-pub. void PrintAuto(String ModelName)
+pvt. void registerDefaultExceptionFixes()
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLClass</id>
+    <id>UMLInterface</id>
     <coordinates>
-      <x>600</x>
-      <y>195</y>
-      <w>130</w>
-      <h>45</h>
+      <x>1016</x>
+      <y>160</y>
+      <w>32</w>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>_Interface: UpdateAuto_
+    <panel_attributes>Interface
+--
+Operation1
+Operation2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>292</x>
+      <y>200</y>
+      <w>104</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>CreateAuto
+--
+pub. void BuildAuto(String FilePath)
+pub. void PrintAuto(String ModelName)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>396</x>
+      <y>188</y>
+      <w>96</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>UpdateAuto
 --
 pub. void UpdateOptionSetName(
-      String, String, String)
+    String, String, String)
 pub. void UpdateOptionPrice(
-       String, String, float)</panel_attributes>
+    String, String, float)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>632</x>
+      <y>200</y>
+      <w>24</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>Fix
+--
+repair()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>672</x>
+      <y>204</y>
+      <w>88</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>ExceptionRegistrar
+--
+pub abs void RegisterErrorFixes()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>516</x>
+      <y>208</y>
+      <w>204</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;260.0;10.0;260.0;70.0;380.0;70.0;380.0;10.0;490.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>676</x>
+      <y>116</y>
+      <w>80</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>ExceptionRegistry
+--
+-id: Long
+_-ClassAttribute: Long_
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+--
+Responsibilities
+-- Resp1
+*-- Resp2*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>712</x>
+      <y>188</y>
+      <w>12</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>116</y>
+      <w>84</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>ExceptionEntry
+--
+Private:
+    short ExceptionID 
+    String Name
+    String DefaultMessage
+    Class&lt;?&gt; Registrar
+    Fix definedFixCode
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+--
+Responsibilities
+-- Resp1
+*-- Resp2*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>576</x>
+      <y>188</y>
+      <w>72</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>160.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>152</y>
+      <w>64</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>344</x>
+      <y>164</y>
+      <w>192</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>BuildAuto</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>340</x>
+      <y>172</y>
+      <w>12</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>516</x>
+      <y>172</y>
+      <w>12</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>172</y>
+      <w>12</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>448</x>
+      <y>264</y>
+      <w>84</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>ProxyAuto
+Package::adapter
+--
+
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>484</x>
+      <y>172</y>
+      <w>24</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;230.0;10.0;130.0;40.0;130.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>64</x>
+      <y>492</y>
+      <w>416</w>
+      <h>124</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;1020.0;20.0;1020.0;290.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>328</x>
+      <y>264</y>
+      <w>84</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>Serializer
+Package::io
+--
+pvt. Auto modelObject
+pvt bool hasModel
+pvt. File storageLocation
+--
+constructors
+Serialize(?File Location?)
+deSerialize(?File Location?)
+--
+Responsibilities
+-- handles Serialization Tasks.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>200</x>
+      <y>208</y>
+      <w>84</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>Util
+Package::driver
+--
+tryParseInt(String)</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
