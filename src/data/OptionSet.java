@@ -6,22 +6,22 @@ import java.util.ArrayList;
 import handler.AutoException;
 
 public class OptionSet implements Serializable {
-	private static final long serialVersionUID = 1L;
-	// gamut will be larger than this.
-	private ArrayList<Option> options;
-	private String name;
 
-	public OptionSet(String name, ArrayList<Option> options) {
+	private static final long	serialVersionUID	= 1L;
+	private ArrayList<Option>	options;	
+	private String				name;
+
+	public OptionSet (String name, ArrayList<Option> options) {
 		this.name = name;
 		this.options = options;
 	}
 
-	public OptionSet(String name) {
+	public OptionSet (String name) {
 		this.setName(name);
 		this.options = new ArrayList<Option>();
 	}
 
-	public OptionSet() {
+	public OptionSet () {
 		this.name = "";
 		this.options = new ArrayList<Option>();
 	}
@@ -30,7 +30,7 @@ public class OptionSet implements Serializable {
 	 * @category Data Output Prints information about a valid OptionSet object's
 	 *           Options array.
 	 */
-	protected void printOptionSet() {
+	protected void printOptionSet(){
 		for (Option o : options) {
 			System.out.printf("%s, costing %7.2f\n", o.getTitle(), o.getCost()); // prints option title, costing option
 																					// cost.\n
@@ -42,7 +42,7 @@ public class OptionSet implements Serializable {
 	 * @return A string containing newline separated values representing the
 	 *         name:cost pairs of all options stored in the OptionSet.
 	 */
-	protected String formatOptionSetForFileOutput() {
+	protected String formatOptionSetForFileOutput(){
 		StringBuffer storage = new StringBuffer();
 		for (Option O : this.options) {
 			storage.append(O.getTitle() + ":" + O.getCost() + "\n"); // Append data Title:Cost\n to stringbuffer
@@ -55,12 +55,12 @@ public class OptionSet implements Serializable {
 	 *            the name of the option to find.
 	 * @return the option, if found, or NULL if no such option exists.
 	 */
-
-	protected Option findOptionByName(String name) {
+	protected Option findOptionByName(String name){
 		for (Option o : this.options) {
 			if (o.getTitle().equals(name)) {
 				return o;
-			} else
+			}
+			else
 				continue;
 		}
 		return null;
@@ -71,8 +71,7 @@ public class OptionSet implements Serializable {
 	 *            the cost value of the option that needs to be found.
 	 * @return the array of Option objects with the chosen cost.
 	 */
-
-	protected Option[] findOptionByCost(double cost) {
+	protected Option[] findOptionByCost(double cost){
 		ArrayList<Option> options = new ArrayList<Option>();
 		for (Option o : this.options) {
 			if (o.getCost() == cost) {
@@ -91,10 +90,10 @@ public class OptionSet implements Serializable {
 	 *             if this method is called on an improperly initialized optionSet
 	 *             object
 	 */
-	protected void SetOptionByName(String name, float Cost) throws AutoException {
+	protected void SetOptionByName(String name, float Cost) throws AutoException{
 		checkArray();
-		for(Option op : this.options) {
-			if(op.getTitle().equals(name)) {
+		for (Option op : this.options) {
+			if (op.getTitle().equals(name)) {
 				op.setCost(Cost);
 			}
 		}
@@ -108,10 +107,10 @@ public class OptionSet implements Serializable {
 	 * @throws ArrayIndexOutOfBoundsException,
 	 *             when called on an improperly or non initialized optionset object.
 	 */
-	protected void setOptionByCost(float Cost, float Set) throws AutoException {
+	protected void setOptionByCost(float Cost, float Set) throws AutoException{
 		checkArray();
-		for(Option op : this.options) {
-			if (op.getCost()==Cost) {
+		for (Option op : this.options) {
+			if (op.getCost() == Cost) {
 				op.setCost(Set);
 			}
 		}
@@ -122,25 +121,23 @@ public class OptionSet implements Serializable {
 	 * @throws AutoException
 	 *             if called from an improperly initialized optionset object
 	 */
-	protected void checkArray() throws AutoException {
-		if(this.options.isEmpty()) {
-			throw new AutoException((short) 0x003);
-		}
+	protected void checkArray() throws AutoException{
+		if (this.options.isEmpty()) { throw new AutoException((short) 0x003); }
 	}
 
-	protected String getName() {
+	protected String getName(){
 		return name;
 	}
 
-	protected void setName(String name) {
+	protected void setName(String name){
 		this.name = name;
 	}
 
-	protected ArrayList<Option> getOptions() {
+	protected ArrayList<Option> getOptions(){
 		return options;
 	}
 
-	protected void setOptions(ArrayList<Option> options) {
+	protected void setOptions(ArrayList<Option> options){
 		this.options = options;
 	}
 }
