@@ -47,6 +47,7 @@ public class AutoException extends Exception {
 
 	public void fix(){
 		// Handler.runFix(this.ExceptionID);
+		this.exceptionRepair(this.ExceptionID);
 	}
 
 	/**

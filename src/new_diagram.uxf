@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>4</zoom_level>
+  <zoom_level>3</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>84</x>
-      <y>264</y>
-      <w>80</w>
-      <h>60</h>
+      <x>147</x>
+      <y>177</y>
+      <w>60</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>Core
 Package::driver
@@ -25,10 +25,10 @@ Handles core execution tasks</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>72</x>
-      <y>504</y>
-      <w>132</w>
-      <h>100</h>
+      <x>138</x>
+      <y>297</y>
+      <w>99</w>
+      <h>75</h>
     </coordinates>
     <panel_attributes>Auto
 Package::data
@@ -52,10 +52,10 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>220</x>
-      <y>504</y>
-      <w>128</w>
-      <h>96</h>
+      <x>246</x>
+      <y>297</y>
+      <w>96</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>OptionSet
 Package::data
@@ -78,10 +78,10 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>364</x>
-      <y>504</y>
-      <w>104</w>
-      <h>96</h>
+      <x>351</x>
+      <y>297</y>
+      <w>78</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>Option
 Package::data
@@ -104,21 +104,21 @@ stores single Options.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>344</x>
-      <y>516</y>
-      <w>28</w>
-      <h>12</h>
+      <x>339</x>
+      <y>306</y>
+      <w>18</w>
+      <h>9</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>316</x>
-      <y>396</y>
-      <w>40</w>
-      <h>12</h>
+      <x>321</x>
+      <y>276</y>
+      <w>30</w>
+      <h>9</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -126,21 +126,21 @@ stores single Options.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
-      <y>516</y>
-      <w>28</w>
-      <h>12</h>
+      <x>234</x>
+      <y>306</y>
+      <w>18</w>
+      <h>9</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>240</x>
-      <y>264</y>
-      <w>84</w>
-      <h>64</h>
+      <x>264</x>
+      <y>177</y>
+      <w>63</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>Parser
 Package::io
@@ -158,10 +158,10 @@ Responsibilities
   <element>
     <id>Text</id>
     <coordinates>
-      <x>84</x>
-      <y>324</y>
-      <w>104</w>
-      <h>44</h>
+      <x>147</x>
+      <y>222</y>
+      <w>78</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>LEGEND
 pvt: Private
@@ -176,10 +176,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>64</x>
-      <y>236</y>
-      <w>676</w>
-      <h>380</h>
+      <x>132</x>
+      <y>156</y>
+      <w>507</w>
+      <h>231</h>
     </coordinates>
     <panel_attributes>E
 n
@@ -199,15 +199,15 @@ A
 r
 e
 a</panel_attributes>
-    <additional_attributes>10.0;10.0;1660.0;10.0;1660.0;930.0;10.0;930.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;1660.0;10.0;1660.0;750.0;10.0;730.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>556</x>
-      <y>248</y>
-      <w>84</w>
-      <h>28</h>
+      <x>501</x>
+      <y>177</y>
+      <w>90</w>
+      <h>39</h>
     </coordinates>
     <panel_attributes>AutoException
 --
@@ -215,30 +215,17 @@ pvt. short exceptionID
 pvt. String message
 --
 pvt. void registerDefaultExceptionFixes()
-</panel_attributes>
+pub. void fix()
+pub. void exceptionRepair(int)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLInterface</id>
     <coordinates>
-      <x>1016</x>
-      <y>160</y>
-      <w>32</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>Interface
---
-Operation1
-Operation2</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLInterface</id>
-    <coordinates>
-      <x>292</x>
-      <y>200</y>
-      <w>104</w>
-      <h>40</h>
+      <x>303</x>
+      <y>129</y>
+      <w>78</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>CreateAuto
 --
@@ -249,10 +236,10 @@ pub. void PrintAuto(String ModelName)</panel_attributes>
   <element>
     <id>UMLInterface</id>
     <coordinates>
-      <x>396</x>
-      <y>188</y>
-      <w>96</w>
-      <h>56</h>
+      <x>381</x>
+      <y>120</y>
+      <w>72</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>UpdateAuto
 --
@@ -265,10 +252,10 @@ pub. void UpdateOptionPrice(
   <element>
     <id>UMLInterface</id>
     <coordinates>
-      <x>632</x>
-      <y>200</y>
-      <w>24</w>
-      <h>36</h>
+      <x>558</x>
+      <y>129</y>
+      <w>18</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>Fix
 --
@@ -278,10 +265,10 @@ repair()</panel_attributes>
   <element>
     <id>UMLInterface</id>
     <coordinates>
-      <x>672</x>
-      <y>204</y>
-      <w>88</w>
-      <h>36</h>
+      <x>588</x>
+      <y>132</y>
+      <w>66</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>ExceptionRegistrar
 --
@@ -291,21 +278,21 @@ pub abs void RegisterErrorFixes()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>516</x>
-      <y>208</y>
-      <w>204</w>
-      <h>36</h>
+      <x>474</x>
+      <y>135</y>
+      <w>150</w>
+      <h>27</h>
     </coordinates>
-    <panel_attributes>lt=.&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;260.0;10.0;260.0;70.0;380.0;70.0;380.0;10.0;490.0;10.0</additional_attributes>
+    <panel_attributes>lt=-&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;250.0;10.0;250.0;70.0;370.0;70.0;370.0;10.0;480.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>676</x>
-      <y>116</y>
-      <w>80</w>
-      <h>76</h>
+      <x>591</x>
+      <y>66</y>
+      <w>60</w>
+      <h>57</h>
     </coordinates>
     <panel_attributes>ExceptionRegistry
 --
@@ -323,10 +310,10 @@ Responsibilities
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>712</x>
-      <y>188</y>
-      <w>12</w>
-      <h>28</h>
+      <x>618</x>
+      <y>120</y>
+      <w>9</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -334,10 +321,10 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>116</y>
-      <w>84</w>
-      <h>76</h>
+      <x>489</x>
+      <y>66</y>
+      <w>63</w>
+      <h>57</h>
     </coordinates>
     <panel_attributes>ExceptionEntry
 --
@@ -359,10 +346,10 @@ Responsibilities
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>576</x>
-      <y>188</y>
-      <w>72</w>
-      <h>28</h>
+      <x>516</x>
+      <y>120</y>
+      <w>54</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>160.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
@@ -370,10 +357,10 @@ Responsibilities
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
-      <y>152</y>
-      <w>64</w>
-      <h>12</h>
+      <x>549</x>
+      <y>93</y>
+      <w>48</w>
+      <h>9</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;140.0;10.0</additional_attributes>
@@ -381,10 +368,10 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>344</x>
-      <y>164</y>
-      <w>192</w>
-      <h>12</h>
+      <x>342</x>
+      <y>102</y>
+      <w>144</w>
+      <h>9</h>
     </coordinates>
     <panel_attributes>BuildAuto</panel_attributes>
     <additional_attributes/>
@@ -392,10 +379,10 @@ Responsibilities
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>172</y>
-      <w>12</w>
-      <h>40</h>
+      <x>339</x>
+      <y>108</y>
+      <w>9</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=.&gt;&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
@@ -403,21 +390,21 @@ Responsibilities
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>516</x>
-      <y>172</y>
-      <w>12</w>
-      <h>48</h>
+      <x>471</x>
+      <y>108</y>
+      <w>9</w>
+      <h>33</h>
     </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+    <panel_attributes>lt=.&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>440</x>
-      <y>172</y>
-      <w>12</w>
-      <h>28</h>
+      <x>414</x>
+      <y>108</y>
+      <w>9</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=.&gt;&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -425,50 +412,49 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>448</x>
-      <y>264</y>
-      <w>84</w>
-      <h>72</h>
+      <x>420</x>
+      <y>177</y>
+      <w>63</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>ProxyAuto
 Package::adapter
 --
-
+pvt. st. ArrayList&lt;Auto&gt; a1
 --
-#Operation(i: int): int
-/+AbstractOperation()/
---</panel_attributes>
+Contains Implementation for
+Create, Update, and Fix Auto</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>484</x>
-      <y>172</y>
-      <w>24</w>
-      <h>100</h>
+      <x>444</x>
+      <y>108</y>
+      <w>21</w>
+      <h>75</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;230.0;10.0;130.0;40.0;130.0;40.0;10.0</additional_attributes>
+    <additional_attributes>20.0;230.0;20.0;180.0;10.0;170.0;20.0;160.0;20.0;130.0;50.0;130.0;50.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>64</x>
-      <y>492</y>
-      <w>416</w>
-      <h>124</h>
+      <x>132</x>
+      <y>288</y>
+      <w>306</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;20.0;1020.0;20.0;1020.0;290.0</additional_attributes>
+    <additional_attributes>10.0;20.0;1000.0;20.0;1000.0;300.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>328</x>
-      <y>264</y>
-      <w>84</w>
-      <h>64</h>
+      <x>330</x>
+      <y>177</y>
+      <w>63</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>Serializer
 Package::io
@@ -488,15 +474,43 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>200</x>
-      <y>208</y>
-      <w>84</w>
-      <h>28</h>
+      <x>234</x>
+      <y>135</y>
+      <w>63</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>Util
 Package::driver
 --
 tryParseInt(String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>453</x>
+      <y>132</y>
+      <w>42</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>FixAuto
+--
+RegisterExceptions()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>264</x>
+      <y>240</y>
+      <w>63</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>ParserFix
+Package::handler
+--
+pvt. st. int fixInt(String)
+pvt. st. double fixDouble(String)</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
