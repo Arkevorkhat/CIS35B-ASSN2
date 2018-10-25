@@ -9,12 +9,19 @@ import handler.AutoException;
 import handler.ExceptionIDs;
 
 public class Core {
-
+	public static boolean DEBUG;
 	private static Parser	fileInputParser;
 	public static File		baseInputFile;
 
 	public static void main(String[] args){
 		try {
+			if(args.length>0) {
+				if (args[0].equals("-d")) {
+					DEBUG = true;
+				} else if (args[0].equals("-s")) {
+					DEBUG = false;
+				}
+			}
 			baseInputFile = new File(Core.class.getResource("Ford ZTW.txt").toURI());
 			if (baseInputFile.exists()) {
 				fileInputParser = new Parser(baseInputFile); // My parser class is not static, and as such, an instance
