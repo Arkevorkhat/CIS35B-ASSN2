@@ -2,6 +2,7 @@ package adapter;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 import data.Auto;
 import data.AutoModel;
@@ -11,7 +12,7 @@ import io.Parser;
 
 public abstract class ProxyAuto {
 
-	private static ArrayList<AutoModel> a1;
+	private static LinkedHashMap<String,AutoModel> a1;
 
 	public ArrayList<ExceptionEntry> RegisterErrorFixes(){
 		return new ArrayList<>();

@@ -10,6 +10,7 @@ import handler.ParserFix;
 public class Parser {
 
 	private File storageLocation;
+	private String ModelName;
 
 	public Parser (File Input) {
 		this.storageLocation = Input;
@@ -18,7 +19,9 @@ public class Parser {
 	protected File getStorageLocation(){
 		return this.storageLocation;
 	}
-
+	public String getName() {
+		return this.ModelName;
+	}
 	/**
 	 * @return a vehicle object defined by the input text file.
 	 */
@@ -34,6 +37,7 @@ public class Parser {
 																				// should be an ordered pair of
 																				// name:cost
 				parserInterimVehicle.setName(tempFirstLine[0]);
+				this.ModelName=parserInterimVehicle.getName();
 				// parserLogger.log(Level.INFO, "parserVehicle.name == " +
 				// parserInterimVehicle.getName());
 				try {
