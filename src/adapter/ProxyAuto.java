@@ -4,13 +4,14 @@ import java.io.File;
 import java.util.ArrayList;
 
 import data.Auto;
+import data.AutoModel;
 import handler.AutoException;
 import handler.ExceptionEntry;
 import io.Parser;
 
 public abstract class ProxyAuto {
 
-	private static ArrayList<Auto> a1;
+	private static ArrayList<AutoModel> a1;
 
 	public ArrayList<ExceptionEntry> RegisterErrorFixes(){
 		return new ArrayList<>();
@@ -40,7 +41,7 @@ public abstract class ProxyAuto {
 
 	public void BuildAuto(String FilePath){
 		Parser p = new Parser(new File(FilePath));
-		a1.add(p.Parse());
+		a1.add((AutoModel) p.Parse());
 	}
 
 	public void PrintAuto(String ModelName) throws AutoException{
