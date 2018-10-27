@@ -1,7 +1,6 @@
+/driver/
+/io/
 /adapter/
 /data/
-/driver/
+/events/
 /handler/
-/io/
-/new_diagram.uxf
-/Serializer.class

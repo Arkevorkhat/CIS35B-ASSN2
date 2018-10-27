@@ -15,6 +15,10 @@ public class AutoModel extends Auto {
 		return interim;
 	}
 
+	public AutoModel(Auto a) {
+		super(a);
+	}
+	
 	public HashMap<String, Option> getSelectionsMap(){
 		return this.Selections;
 	}
@@ -24,6 +28,8 @@ public class AutoModel extends Auto {
 		return this;
 	}
 
+	
+	
 	public AutoModel removeSelection(String ParentOptionSetName, String OptionName){
 		if (Selections.containsKey(ParentOptionSetName)) {
 			if (Selections.get(ParentOptionSetName).getTitle().equals(OptionName)) {

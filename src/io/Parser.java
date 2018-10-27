@@ -9,8 +9,10 @@ import handler.ParserFix;
 
 public class Parser {
 
-	private File storageLocation;
-	private String ModelName;
+	private String	StorageKey;
+	private File	storageLocation;
+	private String	ModelName;
+	private boolean	hasStorKey;
 
 	public Parser (File Input) {
 		this.storageLocation = Input;
@@ -19,16 +21,24 @@ public class Parser {
 	protected File getStorageLocation(){
 		return this.storageLocation;
 	}
-	public String getName() {
+
+	public String getName(){
 		return this.ModelName;
 	}
+
 	/**
 	 * @return a vehicle object defined by the input text file.
 	 */
+	public String getStorageKey(){
+		if (this.hasStorKey) { return this.StorageKey; }
+		else return "na";
+	}
+
 	public Auto Parse(){
 		Auto parserInterimVehicle = new Auto();
 		ArrayList<OptionSet> optionSetList = new ArrayList<OptionSet>();
 		try {
+			int optionSetLoopLimit = 0;
 			Scanner storageInput = new Scanner(new FileReader(storageLocation));
 			if (storageInput.hasNextLine()) { // make sure that the input file is not empty.
 				// parserLogger.log(Level.INFO, "Began reading data from file: " +
@@ -37,7 +47,13 @@ public class Parser {
 																				// should be an ordered pair of
 																				// name:cost
 				parserInterimVehicle.setName(tempFirstLine[0]);
-				this.ModelName=parserInterimVehicle.getName();
+				this.ModelName = parserInterimVehicle.getName();
+				String keyGrab = storageInput.nextLine();
+				try {
+					optionSetLoopLimit = Integer.parseInt(keyGrab);
+					hasStorKey = false;
+				}
+				catch (NumberFormatException except) {}
 				// parserLogger.log(Level.INFO, "parserVehicle.name == " +
 				// parserInterimVehicle.getName());
 				try {
@@ -48,9 +64,10 @@ public class Parser {
 				}
 				// parserLogger.log(Level.INFO, "parserVehicle.cost == " +
 				// parserInterimVehicle.getBaseCost());
-				int optionSetLoopLimit;
 				try {
-					optionSetLoopLimit = Integer.parseInt(storageInput.nextLine());
+					if (optionSetLoopLimit == 0) {
+						optionSetLoopLimit = Integer.parseInt(storageInput.nextLine());
+					}
 				}
 				catch (NumberFormatException e) {
 					optionSetLoopLimit = ParserFix.fixInt("Number of OptionSets");

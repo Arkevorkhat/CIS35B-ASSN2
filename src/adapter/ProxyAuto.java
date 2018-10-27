@@ -20,7 +20,7 @@ public abstract class ProxyAuto {
 
 	public void UpdateOptionSetName(String ModelName, String OptionSetName, String UpdatedName)
 			throws AutoException, IllegalArgumentException{
-		for (Auto a : a1) {
+		for (Auto a : a1.values()) {
 			if (a.getName().equals(ModelName)) {
 				a.setOptionSetName(OptionSetName, UpdatedName);
 				return;
@@ -31,7 +31,7 @@ public abstract class ProxyAuto {
 
 	public void UpdateOptionPrice(String ModelName, String OptionName, float UpdatedPrice) throws AutoException{
 		boolean success = false;
-		for (Auto a : a1) {
+		for (Auto a : a1.values()) {
 			if (a.getName().equals(ModelName)) {
 				a.setOptionPrices(OptionName, UpdatedPrice);
 				success = true;
@@ -42,12 +42,13 @@ public abstract class ProxyAuto {
 
 	public void BuildAuto(String FilePath){
 		Parser p = new Parser(new File(FilePath));
-		a1.add((AutoModel) p.Parse());
+		AutoModel A = new AutoModel(p.Parse());
+		a1.put(p.getStorageKey(),A);
 	}
 
 	public void PrintAuto(String ModelName) throws AutoException{
 		boolean success = false;
-		for (Auto a : a1) {
+		for (Auto a : a1.values()) {
 			if (a.getName().equals(ModelName)) {
 				success = true;
 				System.out.println(a.toString());

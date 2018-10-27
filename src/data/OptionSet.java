@@ -2,13 +2,14 @@ package data;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import handler.AutoException;
 
 public class OptionSet implements Serializable {
 
 	private static final long	serialVersionUID	= 1L;
-	private ArrayList<Option>	options;	
+	private ArrayList<Option>	options;
 	private String				name;
 
 	public OptionSet (String name, ArrayList<Option> options) {
@@ -27,6 +28,8 @@ public class OptionSet implements Serializable {
 	}
 
 	/**
+	 * @category R - Format
+	 * @since assignment 1
 	 * @category Data Output Prints information about a valid OptionSet object's
 	 *           Options array.
 	 */
@@ -38,9 +41,33 @@ public class OptionSet implements Serializable {
 	}
 
 	/**
-	 * @category Data Output
+	 * @category R - User
+	 * @return the option in this optionset as selected by EU.
+	 * @since assignment 3
+	 */
+	protected Option getSelection(){
+		Scanner in = new Scanner(System.in);
+		int iter = 0;
+		do {
+			iter = 0;
+			System.out.printf("Options: \n");
+			for (Option op : this.options) {
+				System.out.printf("%d: %s", iter++, op.getTitle());
+			}
+			if (in.hasNextInt()) {
+				in.close();
+				return this.options.get(iter);
+			}
+			else
+				continue;
+		} while (true);
+	}
+
+	/**
+	 * @category R - Format
 	 * @return A string containing newline separated values representing the
 	 *         name:cost pairs of all options stored in the OptionSet.
+	 * @since assignment 1
 	 */
 	protected String formatOptionSetForFileOutput(){
 		StringBuffer storage = new StringBuffer();
@@ -51,9 +78,11 @@ public class OptionSet implements Serializable {
 	}
 
 	/**
+	 * @category R - Locate
 	 * @param name,
 	 *            the name of the option to find.
 	 * @return the option, if found, or NULL if no such option exists.
+	 * @since assignment 1
 	 */
 	protected Option findOptionByName(String name){
 		for (Option o : this.options) {
@@ -67,6 +96,7 @@ public class OptionSet implements Serializable {
 	}
 
 	/**
+	 * @category R - Locate
 	 * @param cost,
 	 *            the cost value of the option that needs to be found.
 	 * @return the array of Option objects with the chosen cost.
@@ -82,6 +112,7 @@ public class OptionSet implements Serializable {
 	}
 
 	/**
+	 * @category U - Set
 	 * @param name,
 	 *            the name of the option to change
 	 * @param Cost,
@@ -100,6 +131,7 @@ public class OptionSet implements Serializable {
 	}
 
 	/**
+	 * @category U - Set
 	 * @param Cost,
 	 *            the cost value that needs to be updated universally.
 	 * @param Set,
@@ -117,7 +149,7 @@ public class OptionSet implements Serializable {
 	}
 
 	/**
-	 * @category internal utilities
+	 * @category R - Validate
 	 * @throws AutoException
 	 *             if called from an improperly initialized optionset object
 	 */
