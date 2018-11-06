@@ -1,6 +1,6 @@
-/driver/
-/io/
 /adapter/
-/data/
-/events/
+/scaling/
 /handler/
+/io/
+/driver/
+/data/

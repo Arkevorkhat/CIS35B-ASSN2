@@ -25,9 +25,6 @@ public class AutoException extends Exception {
 	 * Exceptions 0xA01 - 0xC80 : Handler package exceptions
 	 * Exceptions 0xC81 - 0xF00 : IO package Exceptions */
 
-	/**
-	 * @return the exceptionID
-	 */
 	private void registerDefaultExceptionFixes(){
 		ExceptionRegistry.Register(() -> {
 			ArrayList<ExceptionEntry> entries = new ArrayList<>();
@@ -62,11 +59,7 @@ public class AutoException extends Exception {
 		// this will only really work for exceptions that cannot be programmatically repaired, and
 		// as such must simply be reported to the end user.
 		// Handler.runFix(exceptionID);
-		for (ExceptionEntry e : ExceptionRegistry.getRegisteredExceptions()) {
-			if (e.getExceptionID() == (short) exceptionID) {
-				e.getDefinedFixCode().repair();
-			}
-		}
+		ExceptionRegistry.getFix((short) exceptionID).getDefinedFixCode().repair();
 	}
 
 	public String getErrorMessage(){

@@ -11,24 +11,48 @@ import java.io.Serializable;
 
 import data.Auto;
 
+/**
+ * Abstracts away Serialization tasks for a given {@link data.Auto} model such that the
+ * end user
+ * doesn't need to know how Serialization works.
+ * 
+ */
 public class Serializer {
 
 	private Auto	modelObject;
 	private boolean	hasModel	= false;
 	private File	saveLocation;
 
+	/**
+	 * Output Constructor
+	 * 
+	 * @param model
+	 *            The {@link data.Auto} object to be serialized.
+	 */
 	public Serializer (Auto model) {
 		this.hasModel = true;
 		this.modelObject = model;
 		this.saveLocation = model.getStorageLocation();
 	}
 
+	/**
+	 * Input Constructor
+	 * 
+	 * @param storageLocation
+	 *            The {@link java.io.File} representation of the location of a .ser file
+	 *            containing an auto object.
+	 */
 	public Serializer (File storageLocation) {
 		this.saveLocation = storageLocation;
 	}
-
+    /**
+     * Dumps the Serializer's {@link data.Auto} object to file, with the .ser extension.
+     * @param Location File Location to save the object at.
+     * @throws NotSerializableException if a subclass of {@link data.Auto} is created and passed, or if no {@link data.Auto} exists.
+     * @throws IOException 
+     */
 	public void Serialize(File Location) throws NotSerializableException, IOException{
-		if (!this.modelObject.getClass().isAssignableFrom(Serializable.class)
+		if (!this.modelObject.getClass().isAssignableFrom(Serializable.class) // reflection to ensure serializability.
 				|| this.hasModel == false) { throw new NotSerializableException(); }
 		if (!Location.exists()) {
 			Location.getParentFile().mkdirs();

@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Random;
 
 import driver.Core;
 import handler.AutoException;
@@ -15,20 +17,24 @@ public class Auto implements Serializable {
 
 	private static final long		serialVersionUID	= 1L;
 	private ArrayList<OptionSet>	options				= new ArrayList<OptionSet>();
+	private HashMap<String, Option>	selections			= new HashMap<String, Option>();
 	private double					baseCost;
 	private String					name;
 	private File					saveLocation;
 	private boolean					exists				= false;
+	private String					make				= "";
+	private int						UID;
 
 	public ArrayList<OptionSet> getOptions(){
 		return options;
 	}
 
-	public Auto (OptionSet[] Options, double BaseCost, String Name) {
+	public Auto (OptionSet[] Options, double BaseCost, String Name, int UUID) {
 		this.options.addAll(Arrays.asList(Options));
 		this.baseCost = BaseCost;
 		this.name = Name;
 		this.exists = true;
+		this.setUUID(UUID);
 		this.assignDefaultFileLocation();
 	}
 
@@ -37,6 +43,8 @@ public class Auto implements Serializable {
 		this.baseCost = BaseCost;
 		this.name = name;
 		this.exists = true;
+		Random r = new Random();
+		this.UID = r.nextInt();
 		this.assignDefaultFileLocation();
 	}
 
@@ -56,6 +64,17 @@ public class Auto implements Serializable {
 		return this.exists;
 	}
 
+	public Auto get(){
+		return this;
+	}
+
+	/**
+	 * Assigns a default save location for a given Auto object, that will be unique across
+	 * objects.
+	 * This save location is only used if the object is being serialized alone.
+	 * 
+	 * @category U - Set
+	 */
 	private void assignDefaultFileLocation(){
 		if (this.name.equals("")) {
 			this.saveLocation = new File(Core.baseInputFile.getParent() + "Auto" + new Date().getTime() + ".ser");
@@ -93,11 +112,31 @@ public class Auto implements Serializable {
 		}
 	}
 
-	public void setOptions(data.OptionSet[] options){
+	public OptionSet getOptionSetByName(String name) throws AutoException{
+		synchronized (this.options) {
+			for (OptionSet o : this.options) {
+				if (o.getName().equals(name)) { return o; }
+			}
+			throw new AutoException((short) 0x02);
+		}
+	}
+
+	public Option getOptionInSetByName(String OptionSetName, String OptionName) throws AutoException{
+		synchronized (this.options) {
+			for (OptionSet o : this.options) {
+				if (o.getName().equals(OptionSetName)) {
+					if (o.hasNamedOption(OptionName)) { return o.findOptionByName(OptionName); }
+				}
+			}
+		}
+		throw new AutoException((short) 0x02);
+	}
+
+	public synchronized void setOptions(data.OptionSet[] options){
 		this.options.addAll(Arrays.asList(options));
 	}
 
-	public void setOptions(ArrayList<OptionSet> options){
+	public synchronized void setOptions(ArrayList<OptionSet> options){
 		this.options = options;
 	}
 
@@ -105,7 +144,7 @@ public class Auto implements Serializable {
 		return baseCost;
 	}
 
-	public void setBaseCost(double baseCost){
+	public synchronized void setBaseCost(double baseCost){
 		this.baseCost = baseCost;
 	}
 
@@ -113,11 +152,11 @@ public class Auto implements Serializable {
 		return name;
 	}
 
-	public void setName(String name){
+	public synchronized void setName(String name){
 		this.name = name;
 	}
 
-	public void setOptionPrices(String name, float updatedPrice){
+	public synchronized void setOptionPrices(String name, float updatedPrice){
 		for (OptionSet s : this.options) {
 			try {
 				s.SetOptionByName(name, updatedPrice);
@@ -128,22 +167,9 @@ public class Auto implements Serializable {
 		}
 	}
 
-	/* public void setOptionByName(String Optionset, String option, float update){
-	 * for (int i = 0; i < this.options.length; i++) {
-	 * if (this.options[i].getName().equals(Optionset)) {
-	 * try {
-	 * this.options[i].SetOptionByName(option, update);
-	 * }
-	 * catch (AutoException e) {
-	 * // TODO Auto-generated catch block
-	 * e.printStackTrace();
-	 * }
-	 * }
-	 * }
-	 * } */
-	public void setOptionSetName(String existing, String update){
+	public synchronized void setOptionSetName(String existing, String update){
 		for (OptionSet os : this.options) {
-			if(os.getName().equals(existing)) {
+			if (os.getName().equals(existing)) {
 				os.setName(update);
 			}
 		}
@@ -158,11 +184,34 @@ public class Auto implements Serializable {
 		}
 		return c.toString();
 	}
-	/* public void setOptionSetName(String existing, String update){
-	 * for (int i = 0; i < this.options.length; i++) {
-	 * if (this.options[i].getName().equals(existing)) {
-	 * this.options[i].setName(update);
-	 * }
-	 * }
-	 * } */
+
+	public synchronized void setMake(String make){
+		this.make = make;
+	}
+
+	public String getMake(){
+		return this.make;
+	}
+
+	public int getUUID(){
+		return UID;
+	}
+
+	public synchronized void setUUID(int uUID){
+		UID = uUID;
+	}
+
+	public HashMap<String, Option> getSelections(){
+		return selections;
+	}
+
+	public synchronized void setSelections(HashMap<String, Option> selections){
+		this.selections = selections;
+	}
+
+	public synchronized void addSelection(OptionSet optionSet, Option option){
+		synchronized (this.selections) {
+			this.selections.put(optionSet.getName(), option);
+		}
+	}
 }

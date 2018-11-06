@@ -157,6 +157,13 @@ public class OptionSet implements Serializable {
 		if (this.options.isEmpty()) { throw new AutoException((short) 0x003); }
 	}
 
+	protected boolean hasNamedOption(String name){
+		for (Option o : this.options) {
+			if (o.getTitle().equals(name)) { return true; }
+		}
+		return false;
+	}
+
 	protected String getName(){
 		return name;
 	}
