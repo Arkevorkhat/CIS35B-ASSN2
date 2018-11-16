@@ -1,9 +1,8 @@
 package scaling;
 
-import adapter.BuildAuto;
-import adapter.CreateAuto;
-import adapter.UpdateAuto;
+import adapter.*;
 import handler.AutoException;
+import handler.ExceptionRegistry;
 
 /**
  * Contains all asynchronous code required to handle CRUD operations for
@@ -12,7 +11,7 @@ import handler.AutoException;
  * @since 03-NOV-2018
  * @version 1
  */
-public class EditAuto {
+public class EditAuto extends ProxyAuto {
 
 	/**
 	 * @param FilePath
@@ -20,16 +19,16 @@ public class EditAuto {
 	 *            {@link data.Auto} object, usable by {@link io.Parser}
 	 * 
 	 */
-	public static void BuildAutoAsync(String FilePath){
-		new Thread(() -> { // Lambda expression creating an anonymous inner class implementing runnable.
-			CreateAuto a = new BuildAuto();
+	public void BuildAutoSync(String FilePath){
+		CreateAuto a = new BuildAuto();
+		synchronized(a1) {
 			try {
 				a.BuildAuto(FilePath);
 			}
 			catch (AutoException e) {
-				e.fix();
+				ExceptionRegistry.getFix(e.getExceptionID()).getDefinedFixCode().repair();
 			}
-		}).start();
+		}
 	}
 
 	/**
@@ -38,65 +37,74 @@ public class EditAuto {
 	 * @param ModelName
 	 *            Name of the {@link data.Auto} to be found.
 	 */
-	public static void PrintAutoAsync(String ModelName){
-		new Thread(() -> {
-			CreateAuto a = new BuildAuto();
+	public void PrintAutoSync(String ModelName){
+		CreateAuto a = new BuildAuto();
+		synchronized(a1) {
 			try {
 				a.PrintAuto(ModelName);
 			}
 			catch (AutoException e) {
-				e.fix();
+				ExceptionRegistry.getFix(e.getExceptionID()).getDefinedFixCode().repair();
 			}
-		}).start();
+		}
 	}
 
 	/**
 	 * @param ModelName
-	 *            Name of the {@link data.Auto} object that will contain the {@link data.OptionSet}
+	 *            Name of the {@link data.Auto} object that will contain the
+	 *            {@link data.OptionSet}
 	 * @param OptionSetName
 	 *            Name of the {@link data.OptionSet} to be updated.
 	 * @param UpdatedName
 	 *            The name to be set.
 	 */
-	public static void UpdateOptionSetNameAsync(String ModelName, String OptionSetName, String UpdatedName){
-		new Thread(() -> {
-			UpdateAuto a = new BuildAuto();
+	public void UpdateOptionSetNameSync(String ModelName, String OptionSetName, String UpdatedName){
+		UpdateAuto a = new BuildAuto();
+		synchronized(a1) {
 			try {
 				a.UpdateOptionSetName(ModelName, OptionSetName, UpdatedName);
 			}
 			catch (AutoException e) {
-				e.fix();
+				ExceptionRegistry.getFix(e.getExceptionID()).getDefinedFixCode().repair();
 			}
-		}).start();
+		}
 	}
 
-	
 	/**
-	 * @param ModelName Name of the {@link data.Auto} object that will contain the {@link data.OptionSet}
-	 * @param OptionName Name of the {@link data.Option} to be updated.
-	 * @param UpdatedPrice The price to set.
+	 * @param ModelName
+	 *            Name of the {@link data.Auto} object that will contain the
+	 *            {@link data.OptionSet}
+	 * @param OptionName
+	 *            Name of the {@link data.Option} to be updated.
+	 * @param UpdatedPrice
+	 *            The price to set.
 	 */
-	public static void UpdateOptionPriceAsync(String ModelName, String OptionName, float UpdatedPrice){
-		new Thread(() -> {
-			UpdateAuto a = new BuildAuto();
+	public void UpdateOptionPriceSync(String ModelName, String OptionName, float UpdatedPrice){
+		UpdateAuto a = new BuildAuto();
+		synchronized(a1) {
 			try {
 				a.UpdateOptionPrice(ModelName, OptionName, UpdatedPrice);
 			}
 			catch (AutoException e) {
-				e.fix();
+				ExceptionRegistry.getFix(e.getExceptionID()).getDefinedFixCode().repair();
 			}
-		}).start();
+		}
 	}
- /**
-  * copies a {@link data.Option} to an {@link data.Auto}'s Selections map.
-  * @param ModelName Name of the {@link data.Auto} object that will be updated.
-  * @param OptionSetName Name of the {@link data.OptionSet} to be found.
-  * @param OptionName Name of the {@link data.Option} object to be found.
-  */
-	public static void MakeSelectionAsync(String ModelName, String OptionSetName, String OptionName){
-		new Thread(() -> {
-			BuildAuto a = new BuildAuto();
-			a.MakeSelection(ModelName, OptionSetName, OptionName);
-		}).start();
+
+	/**
+	 * copies a {@link data.Option} to an {@link data.Auto}'s Selections map.
+	 * 
+	 * @param ModelName
+	 *            Name of the {@link data.Auto} object that will be updated.
+	 * @param OptionSetName
+	 *            Name of the {@link data.OptionSet} to be found.
+	 * @param OptionName
+	 *            Name of the {@link data.Option} object to be found.
+	 */
+	public void MakeSelectionSync(String ModelName, String OptionSetName, String OptionName){
+		BuildAuto b = new BuildAuto();
+		synchronized(a1) {
+			b.MakeSelection(ModelName, OptionSetName, OptionName);
+		}
 	}
 }

@@ -48,6 +48,11 @@ public class ExceptionRegistry {
 		PendingRegistrars.add(registrar);
 	}
 
+	/**
+	 * iterates across all pending {@link handler.ExceptionRegistrar}s and calls their
+	 * register method. Then iterates across those {@link handler.ExceptionEntry} objects and
+	 * adds them to the active exception handler map.
+	 */
 	public static void finalizeAllPendingRegistrars(){
 		for (ExceptionRegistrar registrar : PendingRegistrars) {
 			for (ExceptionEntry entry : registrar.registerExceptionFixes()) {

@@ -38,7 +38,7 @@ public class AutoException extends Exception {
 		ExceptionRegistry.finalizeAllPendingRegistrars();
 	}
 
-	public long getExceptionID(){
+	public short getExceptionID(){
 		return ExceptionID;
 	}
 

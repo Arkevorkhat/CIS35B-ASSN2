@@ -18,12 +18,12 @@ public class Auto implements Serializable {
 	private static final long		serialVersionUID	= 1L;
 	private ArrayList<OptionSet>	options				= new ArrayList<OptionSet>();
 	private HashMap<String, Option>	selections			= new HashMap<String, Option>();
-	private double					baseCost;
-	private String					name;
-	private File					saveLocation;
+	private double					baseCost			= 0.0;
+	private String					name				= "";
+	private File					saveLocation		= null;
 	private boolean					exists				= false;
 	private String					make				= "";
-	private int						UID;
+	private int						UID					= 0;
 
 	public ArrayList<OptionSet> getOptions(){
 		return options;
@@ -175,6 +175,18 @@ public class Auto implements Serializable {
 		}
 	}
 
+	public void updateOptionNames(String existing, String updated){
+		for (OptionSet o : this.options) {
+			ArrayList<Option> op = o.getOptions();
+			for (Option opt : op) {
+				if (opt.getTitle().equals(existing)) {
+					opt.setTitle(updated);
+				}
+			}
+			o.setOptions(op);
+		}
+	}
+
 	@Override
 	public String toString(){
 		StringBuffer c = new StringBuffer();
@@ -209,6 +221,14 @@ public class Auto implements Serializable {
 		this.selections = selections;
 	}
 
+	/**
+	 * Adds the parameters to this Auto's Selections map.
+	 * 
+	 * @param optionSet
+	 *            OptionSet that the Selection will be associated with.
+	 * @param option
+	 *            Option to be associated.
+	 */
 	public synchronized void addSelection(OptionSet optionSet, Option option){
 		synchronized (this.selections) {
 			this.selections.put(optionSet.getName(), option);

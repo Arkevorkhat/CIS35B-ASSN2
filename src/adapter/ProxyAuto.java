@@ -14,9 +14,11 @@ import io.Parser;
 
 public abstract class ProxyAuto {
 
-	private static LinkedHashMap<Integer, Auto> a1;
+	protected static LinkedHashMap<Integer, Auto> a1 = new LinkedHashMap<>();
 
 	/**
+	 * non thread-safe update method that updates the name of some number of optionsets.
+	 * 
 	 * @category U - Change
 	 * @param ModelName
 	 *            Name of the AutoModel object to work on.
@@ -28,18 +30,18 @@ public abstract class ProxyAuto {
 	 *             If the AutoModel object is not found.
 	 */
 	public void UpdateOptionSetName(String ModelName, String OptionSetName, String UpdatedName) throws AutoException{
-		synchronized (a1) {
-			for (Auto a : a1.values()) {
-				if (a.getName().equals(ModelName)) {
-					a.setOptionSetName(OptionSetName, UpdatedName);
-					return;
-				}
+		for (Auto a : a1.values()) {
+			if (a.getName().equals(ModelName)) {
+				a.setOptionSetName(OptionSetName, UpdatedName);
+				return;
 			}
-			throw new AutoException((short) 0x2);
 		}
+		throw new AutoException((short) 0x2);
 	}
 
 	/**
+	 * not thread-safe.
+	 * 
 	 * @category U - Change
 	 * @param ModelName
 	 *            AutoModel Object to change
@@ -51,31 +53,36 @@ public abstract class ProxyAuto {
 	 *             if the AutoModel is not found.
 	 */
 	public void UpdateOptionPrice(String ModelName, String OptionName, float UpdatedPrice){
-		synchronized (a1) {
-			for (Auto a : a1.values()) {
-				if (a.getName().equals(ModelName)) {}
-			}
+		for (Auto a : a1.values()) {
+			if (a.getName().equals(ModelName)) {}
 		}
 	}
 
+	/**
+	 * Not thread-safe.
+	 * 
+	 * @param ModelName
+	 * @param OptionSetName
+	 * @param OptionName
+	 */
 	public void MakeSelection(String ModelName, String OptionSetName, String OptionName){
-		synchronized (a1) {
-			for (Auto a : a1.values()) {
-				if (a.getName().equals(ModelName)) {
-					try {
-						OptionSet ops = a.getOptionSetByName(OptionSetName);
-						Option op = a.getOptionInSetByName(OptionSetName, OptionName);
-						a.addSelection(ops, op);
-					}
-					catch (AutoException e) {
-						e.fix();
-					}
+		for (Auto a : a1.values()) {
+			if (a.getName().equals(ModelName)) {
+				try {
+					OptionSet ops = a.getOptionSetByName(OptionSetName);
+					Option op = a.getOptionInSetByName(OptionSetName, OptionName);
+					a.addSelection(ops, op);
+				}
+				catch (AutoException e) {
+					e.fix();
 				}
 			}
 		}
 	}
 
 	/**
+	 * not thread-safe
+	 * 
 	 * @category C - Input
 	 * @param FilePath
 	 *            The full path to the .txt file containing a structured representation of the
@@ -85,12 +92,12 @@ public abstract class ProxyAuto {
 		Parser p = new Parser(new File(FilePath));
 		Auto A = new Auto(p.Parse());
 		A.setUUID(new Random().nextInt());
-		synchronized (a1) {
-			a1.put(A.getUUID(), A);
-		}
+		a1.put(A.getUUID(), A);
 	}
 
 	/**
+	 * not thread-safe
+	 * 
 	 * @category R - User Output
 	 * @param ModelName
 	 *            The ModelName of the Auto object to be printed
@@ -100,19 +107,26 @@ public abstract class ProxyAuto {
 	 */
 	public void PrintAuto(String ModelName) throws AutoException{
 		boolean success = false;
-		synchronized (a1) {
-			for (Auto a : a1.values()) {
-				if (a.getName().equals(ModelName)) {
-					success = true;
-					System.out.println(a.toString());
-				}
+		for (Auto a : a1.values()) {
+			if (a.getName().equals(ModelName)) {
+				success = true;
+				System.out.println(a.toString());
 			}
 		}
 		if (!success) throw new AutoException((short) 0x2);
 	}
 
+	public void UpdateOptionName(String ModelName, String OptionName, String UpdatedName) throws AutoException{
+		for(Auto a : a1.values()) {
+			if(a.getName().equals(ModelName)){
+			}
+		}
+	}
+
 	/**
-	 * @return
+	 * Helper method from FixAuto
+	 * 
+	 * @return The arraylist containing any error fixes.
 	 */
 	public ArrayList<ExceptionEntry> registerExceptionFixes(){
 		ArrayList<ExceptionEntry> entries = new ArrayList<>();

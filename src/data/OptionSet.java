@@ -71,6 +71,7 @@ public class OptionSet implements Serializable {
 	 */
 	protected String formatOptionSetForFileOutput(){
 		StringBuffer storage = new StringBuffer();
+		storage.append(this.getName()+"\n");
 		for (Option O : this.options) {
 			storage.append(O.getTitle() + ":" + O.getCost() + "\n"); // Append data Title:Cost\n to stringbuffer
 		}

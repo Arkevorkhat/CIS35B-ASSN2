@@ -1,6 +1,3 @@
-/adapter/
-/scaling/
-/handler/
-/io/
 /driver/
-/data/
+/adapter/
+/remote/

@@ -1,0 +1,14 @@
+test:100.00
+3
+Color
+2
+Black:0.0
+White:0.0
+Interior
+2
+Black:0.0
+White:0.0
+Wheels
+2
+Steel:0.0
+Alloy:450.0
