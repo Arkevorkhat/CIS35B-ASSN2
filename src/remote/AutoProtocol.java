@@ -1,4 +1,5 @@
 package remote;
 
 
-public class AutoProtocol {}
+public class AutoProtocol {
+}
