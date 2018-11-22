@@ -1,4 +1,8 @@
-/driver/
 /adapter/
+/data/
+/driver/
+/handler/
+/io/
+/new_diagram.uxf
 /remote/
-/client/
+/scaling/

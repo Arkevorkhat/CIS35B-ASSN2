@@ -1,4 +1,5 @@
 package remote.client;
 
 
-public class Client {}
+public class Client {
+}
